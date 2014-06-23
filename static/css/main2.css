@@ -12,8 +12,8 @@
 
 .jumbotron {
   /* background-image:url('http://studvest.no/sites/default/files/beer_pong_jhm_04.jpg'); */
-  background-image: url(../img/beerpong.jpg);
-  height:700px;
+  background-image: url(../../img/beerpong.jpg);
+  height:500px;
 }
 
 .jumbotron .container {

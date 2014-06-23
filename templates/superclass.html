@@ -4,29 +4,63 @@
 	  <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
     
 	    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-	    <link  type="text/css" rel="stylesheet" href="/static/main2.css"> 
+	    <link  type="text/css" rel="stylesheet" href="/static/css/main2.css"> 
 	</head>
 
 	<body>
-		<div class="nav">
-      		<div class="container">
-        		<ul class="pull-left">
-          			<li><a href="#">Find preParty</a></li>
-          			<li><a href="blog/?">Browse partyfeed</a></li>
-        		</ul>
-        		<ul class="pull-right">
-		          <li><a href="unit2/signup">Sign Up</a></li>
-		          <li><a href="#login">Log In</a></li>
-		          <li><a href="#">About</a></li>
-		          <li><a href="#">Help</a></li>
-        		</ul>
-     		 </div>
-    	</div>
+		<!-- Navbar -->
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button when collapsed -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- site title -->
+					<a class="navbar-brand" href="/blog">Partyfeed</a>
+				</div>
+				<!-- items to potentially collapse -->
+				<div class="collapse navbar-collapse">
+					<!-- Menu items -->
+					<ul class="pull-left">
+						<ul class="nav navbar-nav">
+							<li id="nav-home"><a href="/blog">Home</a></li>
+	          				<li id="nav-find"><a href="#find">Find preParty</a></li>
+	          				<li id="nav-browse"><a href="#browse">Browse partyfeed</a></li>
+	          				<li id="nav-host"><a href="/blog/newpost">Host preparty</a></li>
+	        			</ul>
+	        		</ul>
+	        		<ul class="pull-right">
+	        			<ul class="nav navbar-nav">
+				          	<li id="nav-login"><a href="/blog/login">Login</a></li>
+							<li id="nav-signup"><a href="/blog/signup">Sign Up</a></li>
+							<li id="nav-logout"><a href="/blog/logout">Logout</a></li>
+				          	<li id="nav-about"><a href="#about">About</a></li>
+				          	<li id="nav-help"><a href="#help">Help</a></li>
+	        			</ul>
+					</ul>
+				</div><!--/.navbar-collapse -->
+			</div><!--/.container -->
+		</div><!--/.navbar-default -->
 
-	  <div id="content">
-	  {% block content %}
-	  {% endblock %}
-	  </div>
+		<!-- Main body content -->
+		<div class="container">
+
+			{% block content %}
+			{% endblock %}
+
+		</div><!-- /.container -->
+
+		<!-- JavaScript -->
+		<!-- jQuery -->
+		<script src="/static/js/jquery-1.10.2.min.js"></script>
+		<!-- Bootstrap core JS -->
+		<script src="/static/js/bootstrap.min.js"></script>
+		{% block js %}
+		{% endblock %}
+
 	</body>
 
 </html>

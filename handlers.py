@@ -104,7 +104,7 @@ class BlogHandler(Handler):
 			if points:
 				img_url = functions.gmaps_img(points)
 
-			self.render("blog.html", currentPosts=currentPosts, img_url=img_url, secondsSince = secondsSince)
+			self.render("main.html", currentPosts=currentPosts, img_url=img_url, secondsSince = secondsSince)
 
 		elif self.format == "json":
 			return self.render_json([p.as_dict() for p in currentPosts])
