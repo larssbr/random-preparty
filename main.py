@@ -19,8 +19,8 @@ import handlers
 import webapp2
 
 app = webapp2.WSGIApplication([
+		("/test", handlers.TestHandler), # to do testing with
 		("/",handlers.MainHandler),
-		#("/", handlers.BlogHandler),
 		("/blog/?(?:\.json)?", handlers.BlogHandler),
 		("/blog/newpost/?", handlers.NewPostHandler),
 		("/blog/([0-9]+)(?:\.json)?", handlers.PermalinkHandler),

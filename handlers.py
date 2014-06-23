@@ -86,6 +86,14 @@ class Handler(webapp2.RequestHandler):
 
 # Handler for the page displaying posts
 ###############################
+class MainHandler(Handler):
+	def get(self):
+		self.render("main.html")
+
+class TestHandler(Handler):
+	def get(self):
+		self.render("test.html")
+
 class BlogHandler(Handler):
 	def get(self):
 		currentBlogs = functions.top_blogs()
