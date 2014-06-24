@@ -94,6 +94,10 @@ class TestHandler(Handler):
 	def get(self):
 		self.render("test.html")
 
+class Test_login_Handler(Handler):
+	def get(self):
+		self.render("test_login.html")
+
 class BlogHandler(Handler):
 	def get(self):
 		currentBlogs = functions.top_blogs()
