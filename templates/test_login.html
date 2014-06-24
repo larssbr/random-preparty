@@ -40,7 +40,7 @@
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '{your-app-id}',
+      appId      : '{315394055283680}', //'{your-app-id}',
       cookie     : true,  // enable cookies to allow the server to access 
                           // the session
       xfbml      : true,  // parse social plugins on this page
@@ -60,12 +60,12 @@
     // These three cases are handled in the callback function.
 
     FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+      statusChangeCallback(response); <!-- contains response object -->
     });
 
   };
 
-  
+
 
   // Load the SDK asynchronously
   (function(d, s, id) {
