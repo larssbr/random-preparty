@@ -90,6 +90,10 @@ class MainHandler(Handler):
 	def get(self):
 		self.render("main.html")
 
+class ProfileHandler(Handler):
+	def get(self):
+		self.render("profile.html")
+
 class TestHandler(Handler):
 	def get(self):
 		self.render("test.html")
@@ -173,7 +177,7 @@ class NewPostHandler(Handler):
 
 			if subject and content:
 				e = entities.BlogPost(parent = functions.blog_key(), subject=subject, content=content)
-				if coords:
+				if coords: # if there are coordinates there will be made a map
 					e.coords = coords
 				e.put()
 				functions.top_blogs(True)

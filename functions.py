@@ -108,9 +108,9 @@ def valid_email(email):
 
 # Google maps
 ###############################
-IP_URL = "http://api.hostip.info/?ip="
+IP_URL = "http://api.hostip.info/?ip=" #after ?ip= commes the ip
 
-def get_coords(ip):
+def get_coords(ip): # ip = self.request.remote_addr , that is the way to find the ip adress of a visitor
 	url = IP_URL + ip
 	xml = None
 	try:
@@ -123,7 +123,7 @@ def get_coords(ip):
 		coords = x.getElementsByTagName("gml:coordinates")
 		if coords and coords[0].childNodes[0].nodeValue:
 			lon, lat = coords[0].childNodes[0].nodeValue.split(",")
-			return db.GeoPt(lat, lon)
+			return db.GeoPt(lat, lon) #GeoPt is a datatype in google app engine to store latitude and longditude
 
 GMAPS_URL = "http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false&"
 

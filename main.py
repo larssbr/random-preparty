@@ -21,6 +21,7 @@ import webapp2
 app = webapp2.WSGIApplication([
 		("/test", handlers.TestHandler), # to do testing with
 		("/test_login", handlers.Test_login_Handler),
+		("/profile", handlers.ProfileHandler),
 		("/",handlers.MainHandler),
 		("/blog/?(?:\.json)?", handlers.BlogHandler),
 		("/blog/newpost/?", handlers.NewPostHandler),
