@@ -7,15 +7,15 @@
 <body>
 
   <!-- Javacript to log in user, when pushing the login button -->
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=315394055283680&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
+  <div id="fb-root"></div> <!-- needed by the facebook SDK for javascript to work and must noot be hidden -->
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=315394055283680&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   </script>
 
   <!-- the login button, it shows freinds faces -->
@@ -128,6 +128,25 @@ The other kind of button
 
   <fb:login-button scope="public_profile,email,user_likes, user_friends " onlogin="checkLoginState();">
   </fb:login-button>
+
+<br>
+<br>
+<br>
+
+
+<!-- example to show that i can retrive the name of the person logged in, by pushing the button-->
+<button name="my_full_name" onclick="ShowMyName()" value="My Name" />
+<script language="javascript" type="text/javascript">
+function ShowMyName() {
+        FB.api("/me",
+                function (response) {
+                    alert('Name is ' + response.name);
+                });
+         
+    }
+</script>
+<!-- The above code in turns calls the “https://graph.facebook.com/me” url and sets the returned JSON object to the ‘response’ variable. If you need to call some other type of api calls along with some parameters, then the first argument above will be a little different.  -->
+
 
 
   <!-- Fb like box , id needs to be the facebook page, -> so this is a task for later -->
