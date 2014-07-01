@@ -7,7 +7,7 @@
 <body>
 
   <!-- Javacript to log in user, when pushing the login button -->
-  <div id="fb-root"></div> <!-- needed by the facebook SDK for javascript to work and must noot be hidden -->
+  <div id="fb-root"></div> <!-- needed by the facebook SDK for javascript to work and must not be hidden -->
   <script>
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -25,9 +25,6 @@
  -->
 
 
-
-
-
   <script>
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
@@ -40,6 +37,7 @@
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
         testAPI();
+        getProfileImage();
       } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
         document.getElementById('status').innerHTML = 'Please log ' +
@@ -91,6 +89,7 @@
 
 
     // Load the SDK asynchronously
+    /* denne koden liger også øverst
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
@@ -98,6 +97,10 @@
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+  */
+
+
 
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
@@ -137,13 +140,42 @@ The other kind of button
 <!-- example to show that i can retrive the name of the person logged in, by pushing the button-->
 <button name="my_full_name" onclick="ShowMyName()" value="My Name" />
 <script language="javascript" type="text/javascript">
+
 function ShowMyName() {
         FB.api("/me",
                 function (response) {
                     alert('Name is ' + response.name);
+
+                    // username = response.name // send it to back end maybe, or use response.name to other places on the website
                 });
          
-    }
+  }
+function getProfileImage() {
+ 
+    var $photo = $('.photo'),
+        $btn = $('.btn-fb'),
+        $fbPhoto = $('img.fb-photo');
+ 
+    //uploading
+    $btn.text('Uploading...');
+ 
+    FB.api("/me/picture?width=180&height=180",  function(response) {
+ 
+        var profileImage = response.data.url.split('https://')[1], //remove https to avoid any cert issues
+            randomNumber = Math.floor(Math.random()*256);
+ 
+       //remove if there and add image element to dom to show without refresh
+       if( $fbPhoto.length ){
+           $fbPhoto.remove();
+       }
+         //add random number to reduce the frequency of cached images showing
+       $photo.append('<img class=\"fb-photo img-polaroid\" src=\"http://' + profileImage + '?' + randomNumber + '\">');
+        $btn.addClass('hide');
+    }); 
+}
+
+
+
 </script>
 <!-- The above code in turns calls the “https://graph.facebook.com/me” url and sets the returned JSON object to the ‘response’ variable. If you need to call some other type of api calls along with some parameters, then the first argument above will be a little different.  -->
 
